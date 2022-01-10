@@ -1,0 +1,52 @@
+.server-container {
+    padding: 10px;
+    .side-panel {
+        width: 24%;
+        margin-right: 1%;
+        float: left;
+        max-height: calc(100vh - 56px);
+        min-height: 220px;
+        overflow: auto;
+        background: #fff;
+        box-shadow: 0 1px 8px 0 rgb(0 0 0 / 6%);
+    }
+    .right-panel {
+        width: 75%;
+        float: right;
+        max-height: calc(100vh - 75px);
+        overflow: auto;
+        background: #fff;
+        box-shadow: 0 1px 8px 0 rgb(0 0 0 / 6%);
+        min-height: 200px;
+        .info {
+            padding: 10px 20px;
+            border-bottom: 1px solid #cccccc;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .server-lists {
+            height: calc(100vh - 120px);
+            overflow: auto;
+            .server {
+                padding: 20px;
+                border-bottom: 1px solid #cccccc;
+                .server-model {
+                    font-weight: 700;
+                    font-size: 20px;
+                }
+                .server-details {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    .select-server-btn {
+                        padding: 8px 30px;
+                        font-size: 12px;
+                        line-height: 1;
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

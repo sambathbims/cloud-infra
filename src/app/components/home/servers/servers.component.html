@@ -1,0 +1,43 @@
+<div class="server-container clearfix">
+    <div class="side-panel">
+        <app-filters [categories]="filterCategories" (filterData)="filterData($event)"></app-filters>
+    </div>
+    <div class="right-panel">
+        <div class="info row">
+            <div class="col">MODEL</div>
+            <div class="col">RAM</div>
+            <div class="col">HDD</div>
+            <div class="col">LOCATION</div>
+            <div class="col text-center">PRICE</div>
+        </div>
+        <div class="server-lists" *ngIf="servers?.length">
+            <div class="server" *ngFor="let server of servers">
+                <div class="server-details row">
+                    <div class="col">
+                        <p>{{server.model}}</p>
+                    </div>
+                    <div class="col">
+                        <p>Size: {{server?.ram?.memory}} {{server?.ram?.unit}}</p>
+                        <p>Type: {{server?.ram?.type}}</p>
+                    </div>
+                    <div class="col">
+                        <p>Size: {{server?.hdd?.memory}} {{server?.hdd?.unit}}</p>
+                        <p>Type: {{server?.hdd?.type}}</p>
+                    </div>
+                    <div class="col">
+                        <p>{{server?.location}}</p>
+                    </div>
+                    <div class="col text-center">
+                        <div class="price">
+                            <h4>{{server?.price?.currencySymbol}} {{server?.price?.amountCents}}</h4>
+                            <button type="button" class="btn btn-primary select-server-btn">Select</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="server-lists m-3" *ngIf="!servers?.length">
+            <h6>No results found</h6>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+.filter-container {
+    .heading {
+        padding: 10px;
+        border-bottom: 1px solid #d8d8d8;
+    }
+    .categories {
+        .category-list {
+            padding: 10px;
+            border-bottom: 1px solid #d8d8d8;
+            .category-name {
+                width: 90%;
+                float: left;
+                font-size: 13px;
+            }
+            .fa {
+                width: 10%;
+                float: right;
+                text-align: center;
+                font-size: 13px;
+            }
+            .category-items {
+                margin-top: 15px;
+            }
+
+            .ngx-slider-inner-tooltip {
+                font-size: 10px !important;
+            }
+        }
+    }
+}

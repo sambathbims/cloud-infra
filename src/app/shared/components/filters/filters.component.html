@@ -1,0 +1,55 @@
+<div class="filter-container">
+    <div class="heading">
+        <h4>Filters</h4>
+    </div>
+    <div class="categories" >
+        <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+            <div *ngFor="let category of categories" class="category-list">
+                <div class="clearfix" (click)="category.collapsed = !category.collapsed">
+                    <span class="category-name pointer">{{category?.name}}</span>
+                    <span class="fa pointer" [ngClass]="category?.collapsed ? 'fa-chevron-down' : 'fa-chevron-up'"></span>
+                </div>
+                <div class="category-items" *ngIf="!category.collapsed">
+                    <ng-container *ngTemplateOutlet="category?.type === filterTypes?.dropdown ? 
+                    dropDown : (category?.type === filterTypes?.checkbox ? checkBox : 
+                    (category?.type === filterTypes?.range ? rangeSlider : text)) ;
+                    context: {formGroup: filterForm, values: category.values, data: category}">
+                    </ng-container>
+                </div>
+            </div>
+            <div class="form-group mt-3 p-3">
+                <button type="submit" class="btn btn-primary btn-sm btn-block select-server-btn">Filter</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<ng-template #dropDown let-formGroup="formGroup" let-values="values" let-data="data">
+    <div class="form-group" [formGroup]="formGroup">
+        <select class="form-control form-control-sm" formControlName="{{data.key}}">
+            <option [ngValue]="null" selected>All</option>
+            <option *ngFor="let value of values" value="{{value}}">{{value}}</option>
+        </select>
+    </div>
+</ng-template>
+
+<ng-template #checkBox let-values="values" let-data="data">
+    <div class="form-check" *ngFor="let value of values; let index = index">
+        <input class="form-check-input" type="checkbox" value="{{value.value}}"
+            (change)="onCheckBoxSelect($event, data)" id="ram-size-{{index}}">
+        <label class="form-check-label" for="ram-size-{{index}}">
+          {{value?.value}} {{value?.unit}}
+        </label>
+    </div>
+</ng-template>
+
+<ng-template #rangeSlider let-values="values" let-data="data">
+    <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="sliderOptions(values)" (valueChange)="valueChange($event, data)" (highValueChange)="highValueChange($event, data)"></ngx-slider>
+</ng-template>
+
+<ng-template #text let-formGroup="formGroup" let-values="values" let-data="data">
+    <div class="form-group" [formGroup]="formGroup">
+        <input class="form-control form-control-sm" formControlName="{{data.key}}" type="text"
+        placeholder="Search text">
+    </div>
+</ng-template>
