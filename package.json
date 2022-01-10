@@ -73,16 +73,16 @@
     ],
     "coverageThreshold": {
       "global": {
-        "statements": 95,
-        "branches": 92,
-        "functions": 99,
-        "lines": 99
+        "statements": 80,
+        "branches": 80,
+        "functions": 80,
+        "lines": 80
       },
       "./**/*.ts": {
-        "statements": 95,
-        "branches": 50,
-        "functions": 95,
-        "lines": 95
+        "statements": 80,
+        "branches": 80,
+        "functions": 80,
+        "lines": 80
       }
     },
     "testPathIgnorePatterns": [

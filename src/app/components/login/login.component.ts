@@ -15,10 +15,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     localStorage.removeItem('userInfo');
-    this.loginForm = this.formBuilder.group({
-      email: [null, Validators.required],
-      password: [null, Validators.required]
-    })
+    this.createLoginForm();
   }
 
   login() {
@@ -26,5 +23,11 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userInfo', JSON.stringify(this.loginForm.value));
       this.router.navigate(['/servers']);
     }
+  }
+  createLoginForm() {
+    this.loginForm = this.formBuilder.group({
+      email: [null, Validators.required],
+      password: [null, Validators.required]
+    })
   }
 }
