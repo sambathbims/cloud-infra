@@ -55,6 +55,7 @@ export const categories = [
         min: 0,
         max: 72
     },
+    // Uncomment below object to add one more filter option
     // {
     //     name: 'Location',
     //     type: filterTypes.text,
