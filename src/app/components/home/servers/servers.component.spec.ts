@@ -9,19 +9,19 @@ import { ServerService } from '../../../shared/services/server.service';
 describe('ServersComponent', () => {
   let component: ServersComponent;
   let fixture: ComponentFixture<ServersComponent>;
-  let servers = [
+  const servers = [
 
-  ]
-  let serverServiceMock = {
+  ];
+  const serverServiceMock = {
     getAllServers: () => ({
       subscribe: (f) => f(servers)
     })
-  }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ServersComponent ],
-      schemas:[NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
       imports: [HttpClientTestingModule],
       providers: [
         ServerService,
@@ -48,19 +48,19 @@ describe('ServersComponent', () => {
     expect(component.ngOnInit).toBeDefined();
   });
   it('should run #filterData()', () => {
-    let data = {
-      ram: [1,2],
+    const data = {
+      ram: [1, 2],
       hdd: 'SASS'
-    }
+    };
     component.filterData(data);
     expect(component.filterData).toBeDefined();
   });
 
   it('should run #getAllServers()', () => {
-    let params = {
-      ram: [1,2],
+    const params = {
+      ram: [1, 2],
       hdd: 'SASS'
-    }
+    };
     component.getAllServers(params);
     expect(component.getAllServers).toBeDefined();
   });

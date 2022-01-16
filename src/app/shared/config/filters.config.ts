@@ -4,7 +4,7 @@ export const filterTypes = {
     checkbox: 'checkbox',
     range: 'range',
     text: 'text'
-}
+};
 // Categories for filters
 export const categories = [
     {
@@ -23,14 +23,14 @@ export const categories = [
             {value: 96, unit: 'GB'},
         ],
         collapsed: true,
-        key:'ram'
+        key: 'ram'
     },
     {
         name: 'Hard Disk type',
         type: filterTypes.dropdown,
         values: ['SAS', 'SATA', 'SSD'],
         collapsed: true,
-        key:'hdd'
+        key: 'hdd'
     },
     {
         name: 'Storage',
@@ -50,7 +50,7 @@ export const categories = [
             {value: 72, unit: 'TB'}
         ],
         collapsed: true,
-        key:'storageMin',
+        key: 'storageMin',
         key1: 'storageMax',
         min: 0,
         max: 72
@@ -62,4 +62,4 @@ export const categories = [
     //     collapsed: true,
     //     key:'location'
     // }
-]
+];

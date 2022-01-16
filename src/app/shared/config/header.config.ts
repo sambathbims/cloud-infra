@@ -8,4 +8,4 @@ export const navItems = [
         name: 'Logout',
         path: '/login'
     }
-]
+];

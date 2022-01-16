@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import  * as filterConfig from '../../config/filters.config';
+import { Component, OnInit, Output, EventEmitter, Input, AfterViewChecked } from '@angular/core';
+import * as filterConfig from '../../config/filters.config';
 import { Options } from '@angular-slider/ngx-slider';
 import { ChangeDetectorRef } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -9,39 +9,39 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss']
 })
-export class FiltersComponent implements OnInit {
+export class FiltersComponent implements OnInit, AfterViewChecked {
 
   @Input() categories;
   filterTypes = filterConfig.filterTypes;
   filterForm: FormGroup;
-  minValue: number = 0;
-  maxValue: number = 100;
+  minValue = 0;
+  maxValue = 100;
   @Output() filterData: EventEmitter<any> = new EventEmitter();
 
-  constructor(private cdRef:ChangeDetectorRef, private formBuilder: FormBuilder) { }
+  constructor(private cdRef: ChangeDetectorRef, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.filterForm = this.formBuilder.group({});
-    this.categories.map((category) => {
-      switch (category.type) {
-        case this.filterTypes.checkbox: 
-          this.filterForm.addControl(category.key, new FormArray([]));
+    this.filterForm = this.formBuilder?.group({});
+    this.categories?.map((category) => {
+      switch (category?.type) {
+        case this.filterTypes?.checkbox:
+          this.filterForm?.addControl(category?.key, new FormArray([]));
           break;
-        case this.filterTypes.range: 
-          this.filterForm.addControl(category.key, new FormControl(null));
-          this.filterForm.addControl(category.key1, new FormControl(null));
-          this.minValue = category.min;
-          this.maxValue = category.max;
+        case this.filterTypes.range:
+          this.filterForm?.addControl(category?.key, new FormControl(null));
+          this.filterForm?.addControl(category?.key1, new FormControl(null));
+          this.minValue = category?.min;
+          this.maxValue = category?.max;
           break;
-        default: 
-          this.filterForm.addControl(category.key, new FormControl(null));
-          break
+        default:
+          this.filterForm?.addControl(category?.key, new FormControl(null));
+          break;
       }
-    })
+    });
   }
 
   ngAfterViewChecked() {
-    this.cdRef.detectChanges();
+    this.cdRef?.detectChanges();
   }
 
 
@@ -54,32 +54,32 @@ export class FiltersComponent implements OnInit {
         return {
           value: dt.value,
           legend: dt.unit
-        }
+        };
       })
-    }
+    };
   }
 
   onCheckBoxSelect(event, data) {
-    const formArray: FormArray = this.filterForm.get(data.key) as FormArray;
-    if (event.target.checked) {
-      formArray.push(new FormControl(event.target.value));
+    const formArray: FormArray = this.filterForm?.get(data.key) as FormArray;
+    if (event?.target?.checked) {
+      formArray?.push(new FormControl(event.target.value));
     } else {
-      let index = formArray.value.findIndex(val => val === event.target.value);
+      const index = formArray?.value.findIndex(val => val === event.target.value);
       if (index !== -1) {
-        formArray.removeAt(index);
+        formArray?.removeAt(index);
       }
     }
   }
 
   valueChange(event, data) {
-    this.filterForm.get(data.key).patchValue(event * 1024);
+    this.filterForm?.get(data.key).patchValue(event * 1024);
   }
 
   highValueChange(event, data) {
-    this.filterForm.get(data.key1).patchValue(event * 1024);
+    this.filterForm?.get(data.key1).patchValue(event * 1024);
   }
 
   onSubmit() {
-    this.filterData.emit(this.filterForm.value);
+    this.filterData?.emit(this.filterForm?.value);
   }
 }

@@ -113,6 +113,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "cloud-infrastructure"
+    }
+  },
+  "defaultProject": "cloud-infrastructure",
+  "cli": {
+    "analytics": false
+  }
 }

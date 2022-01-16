@@ -10,11 +10,11 @@ export class AuthGuard implements CanActivate {
 
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        let currentUser = localStorage.getItem('userInfo'); // can be fetched from store, for demo puropse used local storge
+        const currentUser = localStorage.getItem('userInfo'); // can be fetched from store, for demo puropse used local storge
         if (currentUser) {
             return true;
         }
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+        this.router?.navigate(['/login'], { queryParams: { returnUrl: state.url } });
         return false;
     }
 }

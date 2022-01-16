@@ -13,7 +13,7 @@ export class ServerService {
 
   constructor(private http: HttpClient) { }
 
-  getAllServers(params?) :Observable<any>{
-    return this.http.get(`${this.baseUrl}/servers`, {params: params});
+  getAllServers(params?): Observable<any> {
+    return this.http?.get(`${this.baseUrl}/servers`, {params});
   }
 }

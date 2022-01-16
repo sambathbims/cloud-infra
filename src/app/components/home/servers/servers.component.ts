@@ -31,9 +31,9 @@ export class ServersComponent implements OnInit {
       } else {
         if (data[key] === null || data[key] === undefined || data[key] === '') {
           delete data[key];
-        } 
+        }
       }
-    })
+    });
     this.getAllServers(data);
   }
 
@@ -42,6 +42,6 @@ export class ServersComponent implements OnInit {
       if (res) {
         this.servers = res.servers;
       }
-    })
+    });
   }
 }

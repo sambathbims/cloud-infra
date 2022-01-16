@@ -6,7 +6,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { HeadersComponent } from './components/headers/headers.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './components/loader/loader.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [FiltersComponent, HeadersComponent, LoaderComponent, PageNotFoundComponent],
@@ -18,7 +18,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ReactiveFormsModule
   ],
   exports: [
-    FiltersComponent, 
+    FiltersComponent,
     HeadersComponent,
     LoaderComponent
   ]

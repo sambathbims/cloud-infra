@@ -9,7 +9,7 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      schemas:[NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
@@ -22,10 +22,5 @@ describe('HomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should run #ngOnInit()', () => {
-    component.ngOnInit();
-    expect(component.ngOnInit).toBeDefined();
   });
 });

@@ -19,15 +19,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.loginForm.get('email').value === 'admin' && this.loginForm.get('password').value === 'admin') {
+    if (this.loginForm?.get('email').value === 'admin' && this.loginForm?.get('password').value === 'admin') {
       localStorage.setItem('userInfo', JSON.stringify(this.loginForm.value));
       this.router.navigate(['/servers']);
     }
   }
   createLoginForm() {
-    this.loginForm = this.formBuilder.group({
+    this.loginForm = this.formBuilder?.group({
       email: [null, Validators.required],
       password: [null, Validators.required]
-    })
+    });
   }
 }
